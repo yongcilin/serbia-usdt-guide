@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如何用 ECD Wallet 接收 USDT · How to Receive USDT · ECD Wallet vodič</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", sans-serif;
+      background: #f4f6fa;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header .badge {
+      display: inline-block;
+      background: #e94560;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    header h1 span { display: block; font-weight: 400; font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
+    header p.subtitle {
+      font-size: 14px;
+      opacity: 0.6;
+      margin-top: 10px;
+    }
+
+    /* ── Lang column wrapper ── */
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .cols { grid-template-columns: 1fr; }
+    }
+
+    /* ── Column card ── */
+    .col {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .col-header {
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .col-zh .col-header  { background: #e8f4fd; color: #1565c0; }
+    .col-en .col-header  { background: #e8f5e9; color: #2e7d32; }
+    .col-sr .col-header  { background: #fce4ec; color: #c62828; }
+
+    .col-flag { font-size: 20px; }
+
+    .col-body { padding: 20px; }
+
+    /* ── Intro box ── */
+    .intro {
+      background: #f8f9fc;
+      border-left: 4px solid #e94560;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    /* ── Steps ── */
+    .step {
+      margin-bottom: 28px;
+    }
+    .step-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .col-zh .step-num { background: #1565c0; color: #fff; }
+    .col-en .step-num { background: #2e7d32; color: #fff; }
+    .col-sr .step-num { background: #c62828; color: #fff; }
+
+    .step-title h3 {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .step p, .step li {
+      font-size: 14px;
+      color: #333;
+    }
+    .step ul, .step ol {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+    .step li { margin-bottom: 4px; }
+
+    /* ── Info boxes inside steps ── */
+    .info-box {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .info-box.tip  { background: #fff8e1; border-left: 3px solid #f9a825; }
+    .info-box.good { background: #e8f5e9; border-left: 3px solid #43a047; }
+    .info-box.loc  { background: #f3e5f5; border-left: 3px solid #8e24aa; }
+
+    .info-box strong { display: block; margin-bottom: 4px; }
+
+    /* ── Divider ── */
+    .step-divider {
+      border: none;
+      border-top: 1px dashed #e0e0e0;
+      margin: 0 0 28px;
+    }
+
+    /* ── FAQ ── */
+    .faq-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+      padding-top: 4px;
+    }
+    .faq-item {
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .faq-item .q { font-weight: 700; color: #555; }
+    .faq-item .a { color: #333; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      padding: 24px;
+    }
+    footer a { color: #aaa; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">USDT → RSD 完整指南</div>
+  <h1>
+    如何用 ECD Wallet 接收 USDT 並換成塞爾維亞第納爾
+    <span>How to Receive USDT &amp; Convert to Serbian Dinars · Kako primiti USDT i pretvoriti u RSD</span>
+  </h1>
+  <p class="subtitle">ECD Wallet · iOS · TRC20 · Niš</p>
+</header>
+
+<div class="page">
+  <div class="cols">
+
+    <!-- ═══════════════════ 中文 ═══════════════════ -->
+    <div class="col col-zh">
+      <div class="col-header">
+        <span class="col-flag">🇹🇼</span> 繁體中文
+      </div>
+      <div class="col-body">
+
+        <div class="intro">
+          你的朋友要用 <strong>USDT</strong>（一種價值等同美元的數位貨幣）支付給你。只需開設免費的 <strong>ECD Wallet</strong> 帳戶，就能收款並換成塞爾維亞第納爾（RSD）存入銀行，全程在手機上完成。
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">1</div>
+            <h3>下載 ECD Wallet App</h3>
+          </div>
+          <p>開啟 iPhone 的 <strong>App Store</strong>，搜尋「<strong>ECD Wallet</strong>」，安裝（免費）。</p>
+          <div class="info-box tip">
+            <strong>💡 什麼是 ECD Wallet？</strong>
+            塞爾維亞本土合法加密貨幣平台，2012 年成立，超過 65,000 位用戶，App 支援塞爾維亞語介面。
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">2</div>
+            <h3>註冊帳號</h3>
+          </div>
+          <ol>
+            <li>開啟 App，點「<strong>Registracija</strong>（註冊）」</li>
+            <li>輸入你的手機號碼（+381 開頭）</li>
+            <li>輸入電子郵件地址</li>
+            <li>輸入簡訊和信箱收到的驗證碼</li>
+            <li>設定密碼，完成</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">3</div>
+            <h3>到門市完成身分驗證（KYC）</h3>
+          </div>
+          <p>要把錢提到銀行，需要在附近的合作門市「刷身分證」驗證一次，之後不需要再做。</p>
+          <div class="info-box loc">
+            <strong>📍 Niš 的驗證地點（VIP 兌換店）</strong>
+            <ul style="margin-top:6px">
+              <li><strong>市中心：</strong>VIP Niš–Centar<br>Generala Milojka Lešanina br. 2</li>
+              <li style="margin-top:8px"><strong>購物中心：</strong>VIP Delta Planet<br>Bulevar Nemanjića 11b</li>
+            </ul>
+          </div>
+          <div class="info-box good" style="margin-top:10px">
+            ✅ <strong>帶塞爾維亞身分證（lična karta）前往</strong><br>
+            無需預約，現場幾分鐘完成。平日營業至晚間。
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">4</div>
+            <h3>取得你的收款地址</h3>
+          </div>
+          <ol>
+            <li>在 App 首頁點「<strong>Primanje</strong>（接收）」</li>
+            <li>選擇幣種「<strong>USDT</strong>」</li>
+            <li>選擇網路「<strong>TRC20</strong>」（手續費最低）</li>
+            <li>畫面上出現一串字母+數字，這是你的「收款地址」</li>
+            <li>點「複製」，用訊息傳給朋友</li>
+          </ol>
+          <div class="info-box tip">
+            💡 這個地址是固定的，可以一直用，傳給朋友一次即可。
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">5</div>
+            <h3>等待收款</h3>
+          </div>
+          <p>朋友匯出後，通常 <strong>5–15 分鐘</strong>內 USDT 會出現在你的 App 餘額裡。你會收到通知。</p>
+          <div class="info-box good">
+            ✅ 600 歐元以下的交易，在塞爾維亞<strong>無需申報</strong>，直接操作即可。
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 6 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">6</div>
+            <h3>把 USDT 換成第納爾（RSD）</h3>
+          </div>
+          <ol>
+            <li>在 App 首頁點「<strong>Prodaja</strong>（賣出）」</li>
+            <li>選擇「<strong>USDT</strong>」</li>
+            <li>輸入要賣出的金額</li>
+            <li>確認畫面顯示的即時匯率（依塞爾維亞國家銀行中間價）</li>
+            <li>滑動確認，RSD 餘額立刻增加</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 7 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">7</div>
+            <h3>提款到銀行帳戶</h3>
+          </div>
+          <ol>
+            <li>點「<strong>Isplata</strong>（提現）」</li>
+            <li>選擇「RSD 提至銀行」</li>
+            <li>輸入你的銀行帳號（第一次需輸入，之後可儲存）</li>
+            <li>確認金額，送出</li>
+            <li>通常 <strong>幾分鐘至數小時</strong>內入帳</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- FAQ -->
+        <div class="faq-title">常見問題</div>
+        <div class="faq-item">
+          <div class="q">Q：需要手續費嗎？</div>
+          <div class="a">ECD 賣出收約 0.5–1% 手續費。TRC20 轉帳費極低（不到 1 美元），由匯款方負擔。</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Q：USDT 價格會波動嗎？</div>
+          <div class="a">不會。USDT 是穩定幣，1 USDT = 1 美元，不像比特幣會上下浮動。</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Q：平台安全嗎？</div>
+          <div class="a">ECD 是塞爾維亞政府合法認可的持牌平台，12 年無安全事故。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════ English ═══════════════════ -->
+    <div class="col col-en">
+      <div class="col-header">
+        <span class="col-flag">🇬🇧</span> English
+      </div>
+      <div class="col-body">
+
+        <div class="intro">
+          Your friend wants to pay you in <strong>USDT</strong> (a digital currency worth 1 US dollar each). Just create a free <strong>ECD Wallet</strong> account to receive the payment and convert it to Serbian dinars (RSD) directly into your bank — everything done on your phone.
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">1</div>
+            <h3>Download ECD Wallet</h3>
+          </div>
+          <p>Open the <strong>App Store</strong> on your iPhone, search for "<strong>ECD Wallet</strong>", and install it (free).</p>
+          <div class="info-box tip">
+            <strong>💡 What is ECD Wallet?</strong>
+            A legitimate Serbian cryptocurrency platform founded in 2012, with over 65,000 users. The app is available in Serbian language.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">2</div>
+            <h3>Create an Account</h3>
+          </div>
+          <ol>
+            <li>Open the app, tap "<strong>Registracija</strong>" (Register)</li>
+            <li>Enter your phone number (starting with +381)</li>
+            <li>Enter your email address</li>
+            <li>Enter the verification codes sent to your phone and email</li>
+            <li>Set a password — done</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">3</div>
+            <h3>Verify Your Identity (KYC) at a Store</h3>
+          </div>
+          <p>To withdraw money to your bank, you need to verify your identity once at a partner exchange store. This only needs to be done one time.</p>
+          <div class="info-box loc">
+            <strong>📍 Verification locations in Niš (VIP exchange offices)</strong>
+            <ul style="margin-top:6px">
+              <li><strong>City center:</strong> VIP Niš–Centar<br>Generala Milojka Lešanina br. 2</li>
+              <li style="margin-top:8px"><strong>Shopping center:</strong> VIP Delta Planet<br>Bulevar Nemanjića 11b</li>
+            </ul>
+          </div>
+          <div class="info-box good" style="margin-top:10px">
+            ✅ <strong>Bring your Serbian ID card (lična karta)</strong><br>
+            No appointment needed. Takes just a few minutes. Open until evening on weekdays.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">4</div>
+            <h3>Get Your Receive Address</h3>
+          </div>
+          <ol>
+            <li>On the app home screen, tap "<strong>Primanje</strong>" (Receive)</li>
+            <li>Select the currency "<strong>USDT</strong>"</li>
+            <li>Choose the network "<strong>TRC20</strong>" (lowest fees)</li>
+            <li>A string of letters and numbers appears — this is your wallet address</li>
+            <li>Tap "Copy" and send it to your friend</li>
+          </ol>
+          <div class="info-box tip">
+            💡 This address is permanent — you can reuse it every time, no need to generate a new one.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">5</div>
+            <h3>Wait for the Payment</h3>
+          </div>
+          <p>After your friend sends the USDT, it usually arrives in your app balance within <strong>5–15 minutes</strong>. You will receive a notification.</p>
+          <div class="info-box good">
+            ✅ Transactions under €1,000 in Serbia <strong>do not require reporting</strong>. No extra steps needed.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 6 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">6</div>
+            <h3>Convert USDT to Dinars (RSD)</h3>
+          </div>
+          <ol>
+            <li>On the home screen, tap "<strong>Prodaja</strong>" (Sell)</li>
+            <li>Select "<strong>USDT</strong>"</li>
+            <li>Enter the amount you want to sell</li>
+            <li>Confirm the live exchange rate shown (based on National Bank of Serbia rate)</li>
+            <li>Swipe to confirm — your RSD balance increases immediately</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 7 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">7</div>
+            <h3>Withdraw to Your Bank Account</h3>
+          </div>
+          <ol>
+            <li>Tap "<strong>Isplata</strong>" (Withdraw)</li>
+            <li>Select "Withdraw RSD to bank"</li>
+            <li>Enter your bank account number (saved after first time)</li>
+            <li>Confirm the amount and submit</li>
+            <li>Money usually arrives within <strong>a few minutes to a few hours</strong></li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- FAQ -->
+        <div class="faq-title">FAQ</div>
+        <div class="faq-item">
+          <div class="q">Q: Are there fees?</div>
+          <div class="a">ECD charges ~0.5–1% on selling. The TRC20 transfer fee is very low (under $1) and is paid by the sender.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Q: Does USDT go up and down in value?</div>
+          <div class="a">No. USDT is a "stablecoin" — 1 USDT is always worth 1 USD. It doesn't fluctuate like Bitcoin.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Q: Is the platform safe?</div>
+          <div class="a">ECD is a legally licensed platform recognized by the Serbian government, with 12 years of operation and no security incidents.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════ Srpski ═══════════════════ -->
+    <div class="col col-sr">
+      <div class="col-header">
+        <span class="col-flag">🇷🇸</span> Srpski
+      </div>
+      <div class="col-body">
+
+        <div class="intro">
+          Vaš prijatelj želi da vam plati u <strong>USDT</strong>-u (digitalna valuta čija je vrednost jednaka jednom američkom dolaru). Samo otvorite besplatan <strong>ECD Wallet</strong> nalog, primite uplatu i pretvorite je u srpske dinare (RSD) na svom bankovnom računu — sve se radi na telefonu.
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">1</div>
+            <h3>Preuzmite ECD Wallet</h3>
+          </div>
+          <p>Otvorite <strong>App Store</strong> na vašem iPhoneu, potražite "<strong>ECD Wallet</strong>" i instalirajte besplatnu aplikaciju.</p>
+          <div class="info-box tip">
+            <strong>💡 Šta je ECD Wallet?</strong>
+            Srpska legalna kripto platforma, osnovana 2012. godine, sa više od 65.000 korisnika. Aplikacija je na srpskom jeziku.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">2</div>
+            <h3>Registrujte nalog</h3>
+          </div>
+          <ol>
+            <li>Otvorite aplikaciju, tapnite "<strong>Registracija</strong>"</li>
+            <li>Unesite broj telefona (počinje sa +381)</li>
+            <li>Unesite svoju email adresu</li>
+            <li>Unesite verifikacione kodove primljene na telefon i email</li>
+            <li>Podesite lozinku — gotovo</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">3</div>
+            <h3>Verifikacija identiteta (KYC) u poslovnici</h3>
+          </div>
+          <p>Da biste mogli da podignete novac na bankovni račun, potrebno je jednom da verifikujete identitet u partnerskoj menjačnici. Ovo se radi samo jednom.</p>
+          <div class="info-box loc">
+            <strong>📍 Mesta verifikacije u Nišu (VIP menjačnice)</strong>
+            <ul style="margin-top:6px">
+              <li><strong>Centar:</strong> VIP Niš–Centar<br>Generala Milojka Lešanina br. 2</li>
+              <li style="margin-top:8px"><strong>Tržni centar:</strong> VIP Delta Planet<br>Bulevar Nemanjića 11b</li>
+            </ul>
+          </div>
+          <div class="info-box good" style="margin-top:10px">
+            ✅ <strong>Ponesite ličnu kartu</strong><br>
+            Bez zakazivanja. Završi se za nekoliko minuta. Rade do kasno uveče radnim danima.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">4</div>
+            <h3>Pronađite svoju adresu za primanje</h3>
+          </div>
+          <ol>
+            <li>Na početnom ekranu tapnite "<strong>Primanje</strong>"</li>
+            <li>Izaberite valutu "<strong>USDT</strong>"</li>
+            <li>Izaberite mrežu "<strong>TRC20</strong>" (najniže naknade)</li>
+            <li>Pojaviće se niz slova i brojeva — to je vaša adresa novčanika</li>
+            <li>Tapnite "Kopiraj" i pošaljite prijatelju</li>
+          </ol>
+          <div class="info-box tip">
+            💡 Ova adresa je stalna — možete je koristiti svaki put, ne menja se.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">5</div>
+            <h3>Sačekajte uplatu</h3>
+          </div>
+          <p>Nakon što prijatelj pošalje USDT, obično za <strong>5–15 minuta</strong> sredstva će se pojaviti u vašem saldu. Dobićete obaveštenje.</p>
+          <div class="info-box good">
+            ✅ Za iznose ispod 1.000 EUR u Srbiji <strong>nema obaveze prijave</strong>. Nema dodatnih koraka.
+          </div>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 6 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">6</div>
+            <h3>Pretvorite USDT u dinare (RSD)</h3>
+          </div>
+          <ol>
+            <li>Na početnom ekranu tapnite "<strong>Prodaja</strong>"</li>
+            <li>Izaberite "<strong>USDT</strong>"</li>
+            <li>Unesite iznos koji želite da prodate</li>
+            <li>Potvrdite prikazani kurs (prema međukursu Narodne banke Srbije)</li>
+            <li>Prevucite za potvrdu — RSD saldo se odmah povećava</li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- Step 7 -->
+        <div class="step">
+          <div class="step-title">
+            <div class="step-num">7</div>
+            <h3>Podignite novac na bankovni račun</h3>
+          </div>
+          <ol>
+            <li>Tapnite "<strong>Isplata</strong>"</li>
+            <li>Izaberite "Isplata RSD na bankovni račun"</li>
+            <li>Unesite broj bankovnog računa (čuva se posle prvog puta)</li>
+            <li>Potvrdite iznos i pošaljite</li>
+            <li>Novac obično stiže za <strong>nekoliko minuta do nekoliko sati</strong></li>
+          </ol>
+        </div>
+        <hr class="step-divider">
+
+        <!-- FAQ -->
+        <div class="faq-title">Česta pitanja</div>
+        <div class="faq-item">
+          <div class="q">P: Da li postoje naknade?</div>
+          <div class="a">ECD naplaćuje ~0,5–1% za prodaju. Naknada za TRC20 transfer je vrlo niska (ispod 1 USD) i plaća je pošiljalac.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">P: Da li vrednost USDT varira?</div>
+          <div class="a">Ne. USDT je "stablecoin" — 1 USDT uvek vredi 1 USD. Ne menja se kao Bitcoin.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">P: Da li je platforma bezbedna?</div>
+          <div class="a">ECD je legalno licencirana platforma od strane srpske vlade, sa 12 godina rada i bez bezbednosnih incidenata.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /cols -->
+</div><!-- /page -->
+
+<footer>
+  基於 ECD Wallet 官方文件整理 · Based on ECD Wallet official documentation · Na osnovu zvanične ECD Wallet dokumentacije<br>
+  <a href="https://ecd.rs/en/" target="_blank">ecd.rs</a> · 2026
+</footer>
+
+</body>
+</html>
